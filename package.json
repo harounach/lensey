@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "sass": "sass --watch ./sass/main.scss:./public/css/style.css",
+    "sass": "sass --watch ./src/sass/main.scss:./public/css/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
