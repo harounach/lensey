@@ -8,7 +8,7 @@ const newsapi = new NewsAPI(process.env.NEWS_API_KEY);
 router.route("/").get(async (req, res) => {
   const topHeadlines = await newsapi.v2.topHeadlines();
   const articles = topHeadlines["articles"];
-  res.json({ message: "Hello, World!" });
+  res.json(articles);
 });
 
 module.exports = router;

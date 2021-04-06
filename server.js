@@ -17,7 +17,7 @@ app.use(express.json());
 // });
 
 // Set up routes
-app.use("/", newsRoute);
+app.use("/news", newsRoute);
 
 app.listen(process.env.PORT || PORT, () => {
   console.log(
