@@ -1,0 +1,57 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
+
+// topics
+.topics {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  // topics__list
+  &__list {
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    list-style-type: none;
+    display: flex;
+    overflow: auto;
+    li {
+      margin-right: 1rem;
+    }
+  }
+
+  // topics__item
+  &__item {
+    display: block;
+    height: 2.25rem;
+    text-decoration: none;
+    border: none;
+    border-radius: 1.5rem;
+    background-color: variables.$primary-dark-color;
+    color: variables.$on-primary-dark-color;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: box-shadow 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    // box-shadow
+    @include mixins.btn-shadow;
+
+    &:hover {
+      @include mixins.btn-hover-shadow;
+    }
+
+    &:active {
+      @include mixins.btn-hover-shadow;
+    }
+
+    &:focus {
+      @include mixins.btn-hover-shadow;
+    }
+  }
+}
