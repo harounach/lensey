@@ -6,7 +6,11 @@ const newsapi = new NewsAPI(process.env.NEWS_API_KEY);
 
 // index page route
 router.route("/").get(async (req, res) => {
-  const topHeadlines = await newsapi.v2.topHeadlines();
+  const { category } = req.query;
+  const topHeadlines = await newsapi.v2.topHeadlines({
+    category: category,
+    country: "us",
+  });
   const articles = topHeadlines["articles"];
   res.json(articles);
 });
