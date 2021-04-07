@@ -1,0 +1,13 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Lensey-Icon">
+<g id="background">
+<mask id="path-1-inside-1" fill="white">
+<rect width="192" height="192" rx="8"/>
+</mask>
+<rect width="192" height="192" rx="8" fill="#06D6A0" stroke="white" stroke-width="32" mask="url(#path-1-inside-1)"/>
+</g>
+<rect id="upbar" x="36" y="32" width="16" height="128" fill="white"/>
+<circle id="eye" cx="120" cy="72" r="32" fill="#06D6A0" stroke="white" stroke-width="16"/>
+<rect id="downbar" x="36" y="144" width="124" height="16" fill="white"/>
+</g>
+</svg>
