@@ -66,7 +66,21 @@ window.addEventListener("DOMContentLoaded", () => {
     init: function () {
       this.featuredArticles = document.querySelector(".featured-articles");
       this.articles = document.querySelector(".articles");
+      /** @type {HTMLAnchorElement} */
+      this.topics = document.querySelector(".topics__list");
       this.loader = document.querySelector(".loader");
+
+      const self = this;
+
+      // Register topics listener
+      this.topics.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (event.target.nodeName === "A") {
+          // Fetch topic articles
+          const category = event.target.textContent.toLowerCase();
+          controller.getData(category);
+        }
+      });
     },
 
     /**
