@@ -42,13 +42,20 @@ window.addEventListener("DOMContentLoaded", () => {
       this.getData(model.defaultCategory);
     },
     getData: function (category) {
+      // show loader
+      view.showLoader(true);
       model
         .getArticlesData(category)
         .then((articles) => {
           // render view with new data
           view.render(articles.data);
+
+          // hide loader
+          view.showLoader(false);
         })
         .catch((err) => {
+          // hide loader
+          view.showLoader(false);
           console.log(err);
         });
     },
@@ -59,6 +66,7 @@ window.addEventListener("DOMContentLoaded", () => {
     init: function () {
       this.featuredArticles = document.querySelector(".featured-articles");
       this.articles = document.querySelector(".articles");
+      this.loader = document.querySelector(".loader");
     },
 
     /**
@@ -212,6 +220,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
       // Append articleCard to the page
       this.articles.appendChild(articleCard);
+    },
+
+    /**
+     * Show and hide loader when requesting data
+     */
+    showLoader: function (isLoading) {
+      if (isLoading) {
+        this.loader.classList.add("loader--show");
+      } else {
+        this.loader.classList.remove("loader--show");
+      }
     },
   };
 
