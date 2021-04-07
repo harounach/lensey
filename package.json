@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/harounach/lensey#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "newsapi": "^2.4.1"
   },

@@ -23,5 +23,53 @@ window.addEventListener("DOMContentLoaded", () => {
    * @property {string} name
    */
 
-  console.log("Hello, World!");
+  /* Model */
+  const model = {
+    defaultCategory: "general",
+    getArticlesData: async function (category) {
+      return axios.get("/news", {
+        params: {
+          category: category,
+        },
+      });
+    },
+  };
+
+  /* Controller */
+  const controller = {
+    init: function () {
+      view.init();
+      this.getData(model.defaultCategory);
+    },
+    getData: function (category) {
+      model
+        .getArticlesData(category)
+        .then((articlesData) => {
+          // render view with new data
+          view.render(articlesData.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  };
+
+  /* View */
+  const view = {
+    init: function () {
+      console.log("Init View");
+    },
+
+    /**
+     * Render articles
+     *
+     * @param {Array<Article>} articles - Articles Array
+     */
+    render: function (articles) {
+      console.log(articles);
+    },
+  };
+
+  /* Init App */
+  controller.init();
 });
