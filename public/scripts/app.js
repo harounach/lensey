@@ -57,7 +57,8 @@ window.addEventListener("DOMContentLoaded", () => {
   /* View */
   const view = {
     init: function () {
-      console.log("Init View");
+      this.featuredArticles = document.querySelector(".featured-articles");
+      this.articles = document.querySelector(".articles");
     },
 
     /**
@@ -80,6 +81,9 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     populateFeaturedArticles: function (featuredArticlesData) {
       console.log(featuredArticlesData);
+      featuredArticlesData.forEach((articleData) => {
+        this.createFeaturedArticle(articleData);
+      });
     },
 
     /**
@@ -94,9 +98,64 @@ window.addEventListener("DOMContentLoaded", () => {
     /**
      * Create article element and insert to the page
      *
-     * @param {Article} featuredarticleData
+     * @param {Article} featuredArticleData
      */
-    createFeaturedArticle: function (featuredarticleData) {},
+    createFeaturedArticle: function (featuredArticleData) {
+      // Create featured article
+      const featuredArticleCard = document.createElement("a");
+      featuredArticleCard.classList.add("featured");
+      featuredArticleCard.href = featuredArticleData.url;
+
+      // Create image wrapper
+      const imageWrapper = document.createElement("div");
+      imageWrapper.classList.add("featured__img-wrapper");
+
+      // Create article image
+      const articleImage = document.createElement("img");
+      articleImage.classList.add("featured__img");
+      articleImage.src = featuredArticleData.urlToImage;
+      articleImage.alt = featuredArticleData.title;
+
+      // Create text wrapper
+      const textWrapper = document.createElement("div");
+      textWrapper.classList.add("featured__text");
+
+      // Create article title
+      const articleTitle = document.createElement("p");
+      articleTitle.classList.add("featured__title");
+      articleTitle.textContent = featuredArticleData.title;
+
+      // Create article date
+      const articleDate = document.createElement("span");
+      articleDate.classList.add("featured__publishedAt");
+      articleDate.textContent = featuredArticleData.publishedAt;
+
+      // Create featured artcile tag
+      const tag = document.createElement("span");
+      tag.classList.add("featured__tag");
+      tag.textContent = "Featured";
+
+      // Append articleImage to imageWrapper
+      imageWrapper.appendChild(articleImage);
+
+      // Append imageWrapper to featuredArticleCard
+      featuredArticleCard.appendChild(imageWrapper);
+
+      // Append articleTitle to textWrapper
+      textWrapper.appendChild(articleTitle);
+
+      // Append articleDate to textWrapper
+      textWrapper.appendChild(articleDate);
+
+      // Append textWrapper to featuredArticleCard
+      featuredArticleCard.appendChild(textWrapper);
+
+      // Append tag to featuredArticleCard
+      featuredArticleCard.appendChild(tag);
+
+      // Append featuredArticleCard to the page
+      this.featuredArticles.appendChild(featuredArticleCard);
+    },
 
     /**
      * Create article element and insert to the page
