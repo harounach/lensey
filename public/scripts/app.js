@@ -93,6 +93,9 @@ window.addEventListener("DOMContentLoaded", () => {
      */
     populateAllArticles: function (articlesData) {
       console.log(articlesData);
+      articlesData.forEach((articleData) => {
+        this.createArticle(articleData);
+      });
     },
 
     /**
@@ -162,7 +165,54 @@ window.addEventListener("DOMContentLoaded", () => {
      *
      * @param {Article} articleData
      */
-    createArticle: function (articleData) {},
+    createArticle: function (articleData) {
+      // Create  article card
+      const articleCard = document.createElement("a");
+      articleCard.classList.add("article");
+      articleCard.href = articleData.url;
+
+      // Create image wrapper
+      const imageWrapper = document.createElement("div");
+      imageWrapper.classList.add("article__img-wrapper");
+
+      // Create article image
+      const articleImage = document.createElement("img");
+      articleImage.classList.add("article__img");
+      articleImage.src = articleData.urlToImage;
+      articleImage.alt = articleData.title;
+
+      // Create text wrapper
+      const textWrapper = document.createElement("div");
+      textWrapper.classList.add("article__text");
+
+      // Create article title
+      const articleTitle = document.createElement("p");
+      articleTitle.classList.add("article__title");
+      articleTitle.textContent = articleData.title;
+
+      // Create article date
+      const articleDate = document.createElement("span");
+      articleDate.classList.add("article__publishedAt");
+      articleDate.textContent = articleData.publishedAt;
+
+      // Append articleImage to imageWrapper
+      imageWrapper.appendChild(articleImage);
+
+      // Append imageWrapper to articleCard
+      articleCard.appendChild(imageWrapper);
+
+      // Append articleTitle to textWrapper
+      textWrapper.appendChild(articleTitle);
+
+      // Append articleDate to textWrapper
+      textWrapper.appendChild(articleDate);
+
+      // Append textWrapper to articleCard
+      articleCard.appendChild(textWrapper);
+
+      // Append articleCard to the page
+      this.articles.appendChild(articleCard);
+    },
   };
 
   /* Init App */
