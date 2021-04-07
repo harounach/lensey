@@ -44,9 +44,9 @@ window.addEventListener("DOMContentLoaded", () => {
     getData: function (category) {
       model
         .getArticlesData(category)
-        .then((articlesData) => {
+        .then((articles) => {
           // render view with new data
-          view.render(articlesData.data);
+          view.render(articles.data);
         })
         .catch((err) => {
           console.log(err);
@@ -63,11 +63,47 @@ window.addEventListener("DOMContentLoaded", () => {
     /**
      * Render articles
      *
-     * @param {Array<Article>} articles - Articles Array
+     * @param {Array<Article>} articlesData - Articles Array
      */
-    render: function (articles) {
-      console.log(articles);
+    render: function (articlesData) {
+      console.log(articlesData);
+      const featuredArticles = articlesData.slice(0, 3);
+      const allArticles = articlesData.slice(3);
+
+      this.populateFeaturedArticles(featuredArticles);
+      this.populateAllArticles(allArticles);
     },
+
+    /**
+     * Populate featured articles
+     * @param {Array<Article>} featuredArticlesData
+     */
+    populateFeaturedArticles: function (featuredArticlesData) {
+      console.log(featuredArticlesData);
+    },
+
+    /**
+     * Populate all articles
+     *
+     * @param {Array<Article>} articlesData
+     */
+    populateAllArticles: function (articlesData) {
+      console.log(articlesData);
+    },
+
+    /**
+     * Create article element and insert to the page
+     *
+     * @param {Article} featuredarticleData
+     */
+    createFeaturedArticle: function (featuredarticleData) {},
+
+    /**
+     * Create article element and insert to the page
+     *
+     * @param {Article} articleData
+     */
+    createArticle: function (articleData) {},
   };
 
   /* Init App */
