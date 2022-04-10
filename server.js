@@ -1,9 +1,12 @@
-require("dotenv").config();
+if (process.env.NODE_ENV === "development") {
+  require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 
 // server port
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const newsRoute = require("./routes/newsRoute");
 
@@ -19,7 +22,7 @@ app.use(express.json());
 // Set up routes
 app.use("/news", newsRoute);
 
-app.listen(process.env.PORT || PORT, () => {
+app.listen(PORT, () => {
   console.log(
     `Server listening on port: ${PORT} visit http://localhost:${PORT}`
   );
